@@ -8,7 +8,7 @@ A package template for Rust-based Compute@Edge projects equipped with continuous
 
 ```sh
 fastly compute init \
-  --from git@github.com:softprops/fastly-template-test.git
+  --from https://github.com/softprops/fastly-template-rust.git
 ```
 
 [cli]: https://github.com/fastly/cli
