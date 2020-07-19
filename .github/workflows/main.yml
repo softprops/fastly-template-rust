@@ -48,8 +48,8 @@ jobs:
           ~/.cargo/registry
           ~/.cargo/git
           target
-        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-   - run: cargo clippy --all-targets -- -D clippy::all
+      key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+    - run: cargo clippy --all-targets -- -D clippy::all
 
   build:
     runs-on: ubuntu-latest
@@ -68,7 +68,7 @@ jobs:
           ~/.cargo/registry
           ~/.cargo/git
           target
-        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+      key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
     - run: cargo check --all
 
   deploy:
@@ -90,8 +90,8 @@ jobs:
           ~/.cargo/registry
           ~/.cargo/git
           target
-        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-     - name: Setup Fastly CLI
+      key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+    - name: Setup Fastly CLI
       if: env.FASTLY_API_TOKEN
       uses: softprops/setup-fastly-cli@v1
       env:
