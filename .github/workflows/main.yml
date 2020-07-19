@@ -24,7 +24,7 @@ jobs:
       uses: actions/cache@v2
       with:
         key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-        paths: |
+        path: |
           ~/.cargo/registry
           ~/.cargo/git
           target      
@@ -45,7 +45,7 @@ jobs:
       uses: actions/cache@v2
       with:
         key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-        paths: |
+        path: |
           ~/.cargo/registry
           ~/.cargo/git
           target      
@@ -65,7 +65,7 @@ jobs:
       uses: actions/cache@v2
       with:
         key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-        paths: |
+        path: |
           ~/.cargo/registry
           ~/.cargo/git
           target      
@@ -87,7 +87,7 @@ jobs:
       uses: actions/cache@v2
       with:
         key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-        paths: |
+        path: |
           ~/.cargo/registry
           ~/.cargo/git
           target      
