@@ -1,0 +1,5 @@
+manifest_version = "0.1.0"
+name = "Compute@Edge template for Rust"
+description = "A package template for Rust-based Compute@Edge projects equipped with continuous deployment with GitHub actions"
+authors = ["<d.tangren@gmail.com>"]
+language = "rust"
