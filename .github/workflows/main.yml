@@ -125,6 +125,10 @@ jobs:
       env:
         FASTLY_API_TOKEN: ${{ secrets.FASTLY_API_TOKEN }}
     - name: Deploy
+      if: env.FASTLY_API_TOKEN
       run: |
         fastly compute build
         fastly compute deploy
+      env:
+        FASTLY_API_TOKEN: ${{ secrets.FASTLY_API_TOKEN }}
+ 
