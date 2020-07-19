@@ -20,21 +20,14 @@ jobs:
         rust-version: 1.43.0
         targets: wasm32-wasi
         components: rustfmt
-    - name: Cache cargo registry
-      uses: actions/cache@v1
+    - name: Cache cargo
+      uses: actions/cache@v2
       with:
-        path: ~/.cargo/registry
-        key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
-    - name: Cache cargo index
-      uses: actions/cache@v1
-      with:
-        path: ~/.cargo/git
-        key: ${{ runner.os }}-cargo-index-${{ hashFiles('**/Cargo.lock') }}
-    - name: Cache cargo build
-      uses: actions/cache@v1
-      with:
-        path: target
-        key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
+        paths: |
+          ~/.cargo/registry
+          ~/.cargo/git
+          target
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
     - run: cargo fmt --all -- --check
 
   lint:
@@ -48,22 +41,15 @@ jobs:
         rust-version: 1.43.0
         targets: wasm32-wasi
         components: clippy
-    - name: Cache cargo registry
-      uses: actions/cache@v1
+    - name: Cache cargo
+      uses: actions/cache@v2
       with:
-        path: ~/.cargo/registry
-        key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
-    - name: Cache cargo index
-      uses: actions/cache@v1
-      with:
-        path: ~/.cargo/git
-        key: ${{ runner.os }}-cargo-index-${{ hashFiles('**/Cargo.lock') }}
-    - name: Cache cargo build
-      uses: actions/cache@v1
-      with:
-        path: target
-        key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
-    - run: cargo clippy --all-targets -- -D clippy::all
+        paths: |
+          ~/.cargo/registry
+          ~/.cargo/git
+          target
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+   - run: cargo clippy --all-targets -- -D clippy::all
 
   build:
     runs-on: ubuntu-latest
@@ -75,21 +61,14 @@ jobs:
       with:
         rust-version: 1.43.0
         targets: wasm32-wasi
-    - name: Cache cargo registry
-      uses: actions/cache@v1
+    - name: Cache cargo
+      uses: actions/cache@v2
       with:
-        path: ~/.cargo/registry
-        key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
-    - name: Cache cargo index
-      uses: actions/cache@v1
-      with:
-        path: ~/.cargo/git
-        key: ${{ runner.os }}-cargo-index-${{ hashFiles('**/Cargo.lock') }}
-    - name: Cache cargo build
-      uses: actions/cache@v1
-      with:
-        path: target
-        key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
+        paths: |
+          ~/.cargo/registry
+          ~/.cargo/git
+          target
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
     - run: cargo check --all
 
   deploy:
@@ -104,22 +83,15 @@ jobs:
       with:
         rust-version: 1.43.0
         targets: wasm32-wasi
-    - name: Cache cargo registry
-      uses: actions/cache@v1
+    - name: Cache cargo
+      uses: actions/cache@v2
       with:
-        path: ~/.cargo/registry
-        key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
-    - name: Cache cargo index
-      uses: actions/cache@v1
-      with:
-        path: ~/.cargo/git
-        key: ${{ runner.os }}-cargo-index-${{ hashFiles('**/Cargo.lock') }}
-    - name: Cache cargo build
-      uses: actions/cache@v1
-      with:
-        path: target
-        key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
-    - name: Setup Fastly CLI
+        paths: |
+          ~/.cargo/registry
+          ~/.cargo/git
+          target
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+     - name: Setup Fastly CLI
       if: env.FASTLY_API_TOKEN
       uses: softprops/setup-fastly-cli@v1
       env:
