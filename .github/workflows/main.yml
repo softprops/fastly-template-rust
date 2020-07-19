@@ -23,11 +23,11 @@ jobs:
     - name: Cache cargo
       uses: actions/cache@v2
       with:
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
         paths: |
           ~/.cargo/registry
           ~/.cargo/git
-          target
-      key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          target      
     - run: cargo fmt --all -- --check
 
   lint:
@@ -44,11 +44,11 @@ jobs:
     - name: Cache cargo
       uses: actions/cache@v2
       with:
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
         paths: |
           ~/.cargo/registry
           ~/.cargo/git
-          target
-      key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          target      
     - run: cargo clippy --all-targets -- -D clippy::all
 
   build:
@@ -64,11 +64,11 @@ jobs:
     - name: Cache cargo
       uses: actions/cache@v2
       with:
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
         paths: |
           ~/.cargo/registry
           ~/.cargo/git
-          target
-      key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          target      
     - run: cargo check --all
 
   deploy:
@@ -86,11 +86,11 @@ jobs:
     - name: Cache cargo
       uses: actions/cache@v2
       with:
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
         paths: |
           ~/.cargo/registry
           ~/.cargo/git
-          target
-      key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          target      
     - name: Setup Fastly CLI
       if: env.FASTLY_API_TOKEN
       uses: softprops/setup-fastly-cli@v1
