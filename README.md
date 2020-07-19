@@ -13,7 +13,7 @@ fastly compute init \
   --from https://github.com/softprops/fastly-template-rust.git
 ```
 
-- Create a new Fastly API Token [here](https://manage.fastly.com/account/personal/tokens)
+- Create a new Fastly API Token [here](https://manage.fastly.com/account/personal/tokens/new)
 
 - Securely save it it as `FASTLY_API_TOKEN` in your GitHub repository's secrets
 
