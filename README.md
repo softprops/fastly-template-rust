@@ -17,6 +17,6 @@ fastly compute init \
 
 - Securely save it it as `FASTLY_API_TOKEN` in your GitHub repository's secrets
 
-  > It's suggested you limit the scope of this token to the newly created service. Use the `service_id` in your applications `fastly.toml` file as a reference. 
+  > It's suggested you limit the scope of this token to the newly created service. Use the `service_id` in your application's `fastly.toml` file as a reference. 
 
 - Git push to deploy
