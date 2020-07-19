@@ -19,6 +19,7 @@ jobs:
       with:
         rust-version: 1.43.0
         targets: wasm32-wasi
+        components: rustfmt
     - name: Cache cargo registry
       uses: actions/cache@v1
       with:
@@ -46,6 +47,7 @@ jobs:
       with:
         rust-version: 1.43.0
         targets: wasm32-wasi
+        components: clippy
     - name: Cache cargo registry
       uses: actions/cache@v1
       with:
@@ -61,7 +63,7 @@ jobs:
       with:
         path: target
         key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
-    - run:  cargo clippy --all-targets -- -D clippy::all
+    - run: cargo clippy --all-targets -- -D clippy::all
 
   build:
     runs-on: ubuntu-latest
